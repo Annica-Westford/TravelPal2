@@ -1,0 +1,217 @@
+﻿<Window x:Class="TravelPal.AddPackingItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPal"
+        mc:Ignorable="d"
+        FontFamily="Arial" 
+        WindowStartupLocation="CenterScreen"
+        Background="MediumSlateBlue" 
+        FontSize="18"
+        Title="AddPackingItemWindow" Height="500" Width="800">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left grid -->
+        <Grid Grid.Column="0" Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Column="0"
+                Grid.Row="0"
+                Content="Add Packing Item"
+                Grid.ColumnSpan="3"
+                FontSize="45"
+                FontWeight="bold"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+
+            <Label
+                Grid.Column="0"
+                Grid.Row="1"
+                Content="Item:"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                />
+            <TextBox
+                Name="tbxItemName"
+                Grid.Column="1"
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Height="35"
+                Width="230"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Left"
+                />
+           
+
+            <CheckBox
+                Name="cbxDocument"
+                Grid.Column="0"
+                Grid.Row="2"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Checked="cbxDocument_Checked"
+                Unchecked="cbxDocument_Unchecked" 
+                >
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2" />
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+
+            <Label
+                Grid.Column="1"
+                Grid.Row="2"
+                Content="Is A Document"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                />
+
+            <CheckBox
+                Name="cbxRequired"
+                Grid.Column="0"
+                Grid.Row="3"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                >
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2" />
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+
+            <Label
+                Name="lblRequired"
+                Grid.Column="1"
+                Grid.Row="3"
+                Content="Is Required"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                />
+
+            <Label
+                Name="lblQuantity"
+                Grid.Column="0"
+                Grid.Row="3"
+                Content="Quantity:"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                />
+
+            <TextBox
+                Name="tbxQuantity"
+                Grid.Column="1"
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                Height="35"
+                Width="230"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Left"
+                />
+
+            <Button
+                Name="btnAdd"
+                IsDefault="True"
+                Grid.Column="1"
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                Content="Add Item"
+                Height="35"
+                Width="230"
+                Foreground="MediumSlateBlue"
+                Background="MintCream"
+                BorderBrush="MediumSlateBlue"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left" 
+                Click="btnAdd_Click"
+                >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+        </Grid>
+
+        <!-- Right grid -->
+        <Grid Grid.Column="1" Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Column="0"
+                Grid.Row="0"
+                Content="Packing List"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="30"
+                FontWeight="Bold"
+                />
+            <ListView
+                Name="lvPackingList"
+                Grid.Column="0"
+                Grid.Row="1"
+                Grid.RowSpan="5"
+                Margin="10 0"
+                Background="MediumSlateBlue"
+                Foreground="MintCream"
+                />
+            <Button
+                Name="btnDone"
+                Grid.Row="6"
+                Content="Done"
+                Height="35"
+                Width="100"
+                Margin="0,0,10,0"
+                Foreground="MintCream"
+                Background="MediumSlateBlue"
+                BorderBrush="MintCream"
+                BorderThickness="2"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right" 
+                Click="btnDone_Click"
+                >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+
+        
+    </Grid>
+</Window>

@@ -1,0 +1,319 @@
+﻿<Window x:Class="TravelPal.AddTravelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPal"
+        mc:Ignorable="d"
+        FontFamily="Arial" 
+        WindowStartupLocation="CenterScreen"
+        Background="MediumSlateBlue" 
+        FontSize="18"
+        Title="AddTravelWindow" Height="600" Width="900">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left grid -->
+        <Grid Grid.Column="0" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Column="0"
+                Grid.Row="0"
+                Grid.ColumnSpan="3"
+                Content="Add Travel"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="45"
+                FontWeight="Bold"
+                Foreground="MintCream"
+                />
+            <Label
+                Grid.Column="0"
+                Grid.Row="1"
+                Content="Start Date:*"
+                Foreground="MintCream"
+                Margin="0,0,20,0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                />
+            <DatePicker
+                Name="dpStartDate"
+                Grid.Column="1"
+                Grid.Row="1"
+                Height="35"
+                Margin="20,0,0,0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                />
+            <Label
+                Grid.Column="0"
+                Grid.Row="2"
+                Content="End Date:*"
+                Foreground="MintCream"
+                Margin="0,0,20,0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                />
+            <DatePicker
+                Name="dpEndDate"
+                Grid.Column="2"
+                Grid.Row="2"
+                Height="35"
+                Margin="20,0,0,0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                />
+            
+            <Label
+                Grid.Column="0"
+                Grid.Row="3"
+                Content="Destination:*"
+                Foreground="MintCream"
+                Margin="0,0,20,0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                />
+            <TextBox
+                Name="tbxDestination"
+                Grid.Column="1"
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                Height="35"
+                Width="230"
+                Margin="20,0,0,0"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Left"
+                />
+            <Label
+                Grid.Column="0"
+                Grid.Row="4"
+                Content="Country:*"
+                Foreground="MintCream"
+                Margin="0,0,20,0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                />
+            <ComboBox
+                Name="cbCountry"
+                Grid.Column="1"
+                Grid.Row="4"
+                Height="35"
+                Width="230"
+                Margin="20,0,0,0"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Left"
+                />
+            <Label
+                Grid.Column="0"
+                Grid.Row="5"
+                Content="Number of travellers:*"
+                Foreground="MintCream"
+                Margin="0,0,20,0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                />
+            <ComboBox
+                Name="cbNoOfTravellers"
+                Grid.Column="1"
+                Grid.Row="5"
+                Height="35"
+                Width="230"
+                Margin="20,0,0,0"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Left"
+                />
+            <Label
+                Grid.Column="0"
+                Grid.Row="6"
+                Content="Trip/Vacation:*"
+                Margin="0,0,20,0"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                />
+            <ComboBox
+                Name="cbTripOrVacation"
+                Grid.Column="1"
+                Grid.Row="6"
+                Height="35"
+                Width="230"
+                Margin="20,0,0,0"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Left" 
+                SelectionChanged="cbTripOrVacation_SelectionChanged"
+                />
+            <Label
+                Name="lblTripType"
+                Grid.Column="0"
+                Grid.Row="7"
+                Content="Trip Type:*"
+                Foreground="MintCream"
+                Margin="0,0,20,0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                />
+            <ComboBox
+                Name="cbTripType"
+                Grid.Column="1"
+                Grid.Row="7"
+                Height="35"
+                Width="230"
+                Margin="20,0,0,0"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Left" 
+                />
+            <CheckBox
+                Name="cbxAllInclusive"
+                Grid.Column="0"
+                Grid.Row="7"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Margin="0,0,20,0"
+                >
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2" />
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+            <Label
+                Name="lblAllInclusive"
+                Grid.Column="1"
+                Grid.Row="7"
+                Content="All Inclusive*"
+                Foreground="MintCream"
+                Margin="20,0,0,0"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Left"
+                />
+
+            <TextBlock
+                Name="txbTravelAdded"
+                Grid.Column="1"
+                Grid.Row="8"
+                Grid.ColumnSpan="2"
+                TextWrapping="Wrap"
+                Foreground="MintCream"
+                FontSize="16"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Visibility="Hidden"
+                />
+
+            <Button
+                Name="btnAddTravel"
+                Grid.Column="2"
+                Grid.Row="9"
+                Content="Add Travel"
+                Height="35"
+                Margin="20,0,0,0" 
+                Foreground="MediumSlateBlue"
+                Background="MintCream"
+                BorderBrush="MediumSlateBlue"
+                Click="btnAddTravel_Click" 
+                >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+
+        <!-- Right grid -->
+        <Grid Grid.Column="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Column="0"
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="30"
+                FontWeight="Bold"
+                Content="Packing List"
+                />
+            <ListView
+                Name="lvPackingList"
+                Grid.Column="0"
+                Grid.Row="1"
+                Grid.ColumnSpan="2" 
+                Grid.RowSpan="8"
+                Margin="10 0"
+                />
+
+            <Button
+                Name="btnAddItemToPackingList"
+                Grid.Column="0"
+                Grid.Row="9"
+                Content="Add item"
+                Height="35"
+                Margin="10 0" 
+                Foreground="MediumSlateBlue"
+                Background="MintCream"
+                BorderBrush="MediumSlateBlue"
+                Click="btnAddItemToPackingList_Click" 
+                >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button
+                Name="btnDone"
+                Grid.Column="2"
+                Grid.Row="9"
+                Content="Done"
+                Height="35"
+                Margin="10 0"
+                Foreground="MintCream"
+                Background="MediumSlateBlue"
+                BorderBrush="MintCream"
+                BorderThickness="2"
+                Click="btnDone_Click" 
+                >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+        </Grid>
+    </Grid>
+</Window>

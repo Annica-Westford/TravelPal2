@@ -1,0 +1,171 @@
+﻿<Window x:Class="TravelPal.UserDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPal"
+        mc:Ignorable="d"
+        FontFamily="Arial" 
+        WindowStartupLocation="CenterScreen"
+        Background="MediumSlateBlue" 
+        FontSize="18"
+        Title="UserDetailsWindow" Height="550" Width="800">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            Grid.Column="1"
+            Grid.Row="0"
+            Grid.RowSpan="8"
+            Grid.ColumnSpan="2"
+            >
+            <Label
+                Content="User Details"
+                Grid.ColumnSpan="2"
+                FontSize="45"
+                FontWeight="bold"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <Label
+                Content="UserName"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <TextBox
+                Name="tbxUserName"
+                Height="35"
+                Width="230"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <Label
+                Name="lblWarningUsernameLength"
+                Foreground="Red"
+                FontSize="14"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <Label
+                Content="Country"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <ComboBox
+                Name="cbCountry"
+                Width="230"
+                Height="35"
+                Background="MintCream"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <Label
+                Content="New Password"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <TextBox
+                Name="tbxNewPassword"
+                Height="35"
+                Width="230"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <Label
+                Name="lblWarningPasswordLength"
+                Foreground="Red"
+                FontSize="14"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <Label
+                Content="Confirm password"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <TextBox
+                Name="tbxConfirmPassword"
+                Height="35"
+                Width="230"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <Label
+                Name="txbWarningPasswordNoMatch"
+                Foreground="Red"
+                FontSize="14"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                >
+                <Button
+                    Name="btnCancel"
+                    Content="Cancel"
+                    Height="35"
+                    Width="100"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Margin="10"
+                    Foreground="MintCream"
+                    Background="MediumSlateBlue"
+                    BorderBrush="MintCream"
+                    BorderThickness="2"
+                    Click="btnCancel_Click"
+                    >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button
+                    Name="btnSave"
+                    IsDefault="True"
+                    Content="Save Changes"
+                    Height="35"
+                    Width="150"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Margin="10"
+                    Foreground="MediumSlateBlue"
+                    Background="MintCream"
+                    BorderBrush="MediumSlateBlue"
+                    Click="btnSave_Click"
+                    >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            
+            
+        </StackPanel>
+
+        
+    </Grid>
+</Window>

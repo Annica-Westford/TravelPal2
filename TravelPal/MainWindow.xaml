@@ -1,0 +1,133 @@
+﻿<Window x:Class="TravelPal.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPal"
+        mc:Ignorable="d" 
+        FontFamily="Arial" 
+        WindowStartupLocation="CenterScreen"
+        Background="MediumSlateBlue" 
+        FontSize="18"
+        Title="MainWindow" Height="500" Width="800">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        
+        <StackPanel
+            Grid.Column="1"
+            Grid.Row="1"
+            Grid.RowSpan="7"
+            >
+            <Label
+                Content="TravelPal🌎"
+                Grid.RowSpan="2"
+                FontSize="60"
+                FontWeight="Bold"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <Label
+                Content="Username"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <TextBox
+                Name="tbxUserName"
+                Grid.Column="3"
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Height="35"
+                Width="230"
+                VerticalContentAlignment="Center"
+                />
+            <Label
+                Content="Password"
+                Foreground="MintCream"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                />
+            <PasswordBox
+                x:Name="pswPassword"
+                Grid.ColumnSpan="2"
+                Height="35"
+                Width="230"
+                VerticalContentAlignment="Center"
+                />
+            <Button
+                Name="btnSignIn"
+                Grid.ColumnSpan="2"
+                Content="Sign in"
+                Height="35"
+                Width="230"
+                IsDefault="True"
+                VerticalAlignment="Center" 
+                Margin="0,20,0,0"
+                Foreground="MediumSlateBlue"
+                    Background="MintCream"
+                    BorderBrush="MediumSlateBlue"
+                Click="btnSignIn_Click" 
+                >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                >
+                <Label
+                    Grid.ColumnSpan="2"
+                    FontSize="16"
+                    Foreground="MintCream"
+                    Content="Don't have an account?"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="0,30,0,0"
+                    />
+                <Button
+                    Name="btnRegister"
+                    Grid.Column="4"
+                    Grid.Row="6"
+                    Content="Register"
+                    Height="30"
+                    Width="80"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="0,20,0,0"
+                    Foreground="MediumSlateBlue"
+                    Background="MintCream"
+                    BorderBrush="MediumSlateBlue"
+                    Click="btnRegister_Click"
+                    >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            
+        </StackPanel>
+
+
+    </Grid>
+</Window>
