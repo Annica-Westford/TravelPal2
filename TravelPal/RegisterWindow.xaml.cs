@@ -34,7 +34,7 @@ namespace TravelPal
 
             //load combobox with countries
             string[] countries = Enum.GetNames(typeof(Countries));
-            cbCountry.ItemsSource = countries; //TODO - fråga hur man gör så de displayas utan _
+            cbCountry.ItemsSource = countries; 
 
             HideErrorMessages();
 
@@ -50,6 +50,7 @@ namespace TravelPal
             lblWarningCountry.Visibility = Visibility.Hidden;
         }
 
+        //when user clicks on Register button validate field inputs and create a new user
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             HideErrorMessages();

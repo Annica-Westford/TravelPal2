@@ -57,7 +57,6 @@ namespace TravelPal
             btnAddItemToPackingList.IsEnabled = false;
         }
 
-
         private void LoadComboboxesWithData()
         {
             //load combobox with countries
@@ -107,6 +106,7 @@ namespace TravelPal
             
         }
 
+        //when user presses the add button create a Trip or Vacation object and add to list of travels (in travelmanager and usermanager)
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -179,6 +179,7 @@ namespace TravelPal
 
         }
 
+        //disable text inputs and comboboxes so that user can't add more travels (so that user can focus on packing list)
         private void DisableTextInputsAndComboboxes()
         {
             dpStartDate.IsEnabled = false;
@@ -190,6 +191,7 @@ namespace TravelPal
             btnAddTravel.IsEnabled = false;
         }
 
+        //update listview with packing list items
         private void UpdatePackingItemsListView()
         {
             lvPackingList.Items.Clear();
@@ -206,6 +208,7 @@ namespace TravelPal
 
         }
 
+        //when user clicks on Add Item - send user to add packing item window
         private void btnAddItemToPackingList_Click(object sender, RoutedEventArgs e)
         {
             AddPackingItemWindow addPackingItemWindow = new(addedTravel);

@@ -137,6 +137,7 @@ namespace TravelPal
             }
         }
 
+        //check if user has selected an item in the list view 
         private bool CheckIfItemIsSelectedInListView()
         {
             if (lvTravels.SelectedItems.Count > 0)

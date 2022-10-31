@@ -62,7 +62,8 @@ namespace TravelPal
             lblWarningPasswordLength.Visibility = Visibility.Hidden;
             txbWarningPasswordNoMatch.Visibility = Visibility.Hidden;
         }
-
+        
+        //Click on Save button - check if user has made any changes and validate them & update user
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             HideErrorMessages();
@@ -180,7 +181,7 @@ namespace TravelPal
         }
 
 
-        //check if password inputs match and if password length is less than 5
+        //check if password inputs match and if password length is more than 5
         private bool ValidatePasswordLength(string newPassword)
         {
             if (newPassword.Length >= 5)
