@@ -22,7 +22,8 @@ namespace TravelPal
     /// Interaction logic for TravelDetailsWindow.xaml
     /// </summary>
     /// 
-    //See details about a travel (låsta inputs)
+
+    //See details about a travel (locked inputs)
     public partial class TravelDetailsWindow : Window
     {
         private Travel selectedTravel; 

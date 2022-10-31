@@ -116,6 +116,19 @@ public class UserManager
 
     }
 
+    private bool CheckIfCountryIsInEurope(string country)
+    {
+        foreach (string europeanCountry in Enum.GetNames(typeof(EuropeanCountries)))
+        {
+            if (country == europeanCountry)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private void UpdateTravelDocuments(User user)
     {
         foreach (Travel travel in user.Travels)
@@ -134,12 +147,9 @@ public class UserManager
     }
 
     private bool CheckIfPassportShouldBeRequired(Countries userLocation, Countries travelDestination)
-    {
-        string userLocationString = userLocation.ToString();    
-        string travelDestinationString = travelDestination.ToString();
-
-        bool isInsideEuropeUserLocation = CheckIfCountryIsInEurope(userLocationString);
-        bool isInsideEuropeTravelCountry = CheckIfCountryIsInEurope(travelDestinationString);
+    {    
+        bool isInsideEuropeUserLocation = CheckIfCountryIsInEurope(userLocation.ToString());
+        bool isInsideEuropeTravelCountry = CheckIfCountryIsInEurope(travelDestination.ToString());
 
         //if travel country is outside of EU & user lives in EU or if user lives outside of EU
         if ((!isInsideEuropeUserLocation) || (!isInsideEuropeTravelCountry && isInsideEuropeUserLocation))
@@ -178,10 +188,11 @@ public class UserManager
     //adds a travel to the users list of travels
     public void AddTravelToUser(Travel travelToAdd)
     {
+        //cast to User to access Travels
         User user = SignedInUser as User;
         user.Travels.Add(travelToAdd);
 
-        //add default packing list items here?
+        //add default travel document to packing item list
         AddDefaultTravelDocuments(travelToAdd);  
     }
 
@@ -202,18 +213,7 @@ public class UserManager
 
     }
 
-    private bool CheckIfCountryIsInEurope(string country)
-    {
-        foreach (string europeanCountry in Enum.GetNames(typeof(EuropeanCountries)))
-        {
-            if (country == europeanCountry)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
+    
 
     public void RemoveTravelFromUser(Travel travelToRemove)
     {
