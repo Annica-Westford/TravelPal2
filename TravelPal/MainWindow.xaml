@@ -8,7 +8,7 @@
         FontFamily="Arial" 
         WindowStartupLocation="CenterScreen"
         Background="MediumSlateBlue" 
-        FontSize="18"
+        FontSize="18" 
         Title="MainWindow" Height="500" Width="800">
     <Grid Margin="20">
         <Grid.ColumnDefinitions>

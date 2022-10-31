@@ -18,14 +18,13 @@ using TravelPal.Models;
 
 namespace TravelPal
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    /// 
+    //Note till Albin:
+    //Jag gjorde ett GitHub repo första dagen på denna uppgiften. Committade hela tiden. Sen skulle jag såklart förstöra allt genom att försöka
+    //reverta en commit, gjorde fel och fick panik. Ser ju att man kan un-reverta en revert men det är jag för stressad för att försöka mig på
+    //Till slut laddade jag ner den tidigare version av koden som jag ville återgå till, gjorde ett nytt repo av den och gjorde en mega-commit 
+    //Så nu syns det inte längre att jag har gjort en massa commits under hela projektets gång...
+    //Och ja, nu har jag lärt mig att om jag ska försöka implementera något jag är lite osäker på ska jag använda BRANCH framöver :)
 
-    //TODO
-    //Should I add user as a property of Travel so I know which user has added which travel?
-    //TODO - Should I create properties or methods somewhere what checks username length and password length?? - Register Window
     public partial class MainWindow : Window
     {
         private TravelManager travelManager = new();
@@ -34,21 +33,30 @@ namespace TravelPal
         {
             InitializeComponent();
 
+            tbxUserName.Focus();
+
             userManager.PopulateUsersList(travelManager);
+
+        }
+
+        //create two more constructors so I can return to main window when closing down other windows
+        public MainWindow(UserManager userManager) 
+        {
+            this.userManager = userManager;
+
+            InitializeComponent();
 
             tbxUserName.Focus();
         }
 
-        //create two more constructors so I can return to main window when closing down other windows
-        public MainWindow(UserManager userManager) : this()
-        {
-            this.userManager = userManager;
-        }
-
-        public MainWindow(UserManager userManager, TravelManager travelManager) : this()
+        public MainWindow(UserManager userManager, TravelManager travelManager) 
         {
             this.userManager = userManager;
             this.travelManager = travelManager;
+
+            InitializeComponent();
+
+            tbxUserName.Focus();
         }
 
         //Opens up register window 

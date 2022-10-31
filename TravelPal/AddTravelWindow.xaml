@@ -273,6 +273,8 @@
                 Grid.ColumnSpan="2" 
                 Grid.RowSpan="8"
                 Margin="10 0"
+                Background="MediumSlateBlue"
+                Foreground="MintCream"
                 />
 
             <Button
