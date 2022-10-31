@@ -67,10 +67,10 @@ public class UserManager
         }  
     }
 
-    public void RemoveUser(IUser userToRemove)
-    {
-        //Maybe implement - don't need to!
-    }
+    //public void RemoveUser(IUser userToRemove)
+    //{
+    //    //Maybe implement - don't need to!
+    //}
 
     public bool UpdateUsername (IUser userToUpdate, string username)
     {        
