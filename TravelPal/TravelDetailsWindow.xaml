@@ -273,7 +273,7 @@
                 />
 
             <Button
-                Name="btnShowDetails"
+                Name="btnAddItem"
                 Grid.Column="0"
                 Grid.Row="8"
                 Content="Add item"
@@ -282,7 +282,7 @@
                 Foreground="MediumSlateBlue"
                 Background="MintCream"
                 BorderBrush="MediumSlateBlue"
-                Click="btnShowDetails_Click" 
+                Click="btnAddItem_Click" 
                 >
                 <Button.Resources>
                     <Style TargetType="Border">

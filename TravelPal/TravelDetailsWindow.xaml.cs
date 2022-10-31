@@ -135,7 +135,7 @@ namespace TravelPal
             cbTripOrVacation.IsHitTestVisible = false;
         }
 
-
+        //Update List view with packing list items
         private void UpdatePackingItemsListView()
         {
             lvPackingList.Items.Clear();
@@ -152,7 +152,8 @@ namespace TravelPal
 
         }
 
-        private void btnShowDetails_Click(object sender, RoutedEventArgs e)
+        //Click on Add Item button - send user to Add Item Window
+        private void btnAddItem_Click(object sender, RoutedEventArgs e)
         {
             AddPackingItemWindow addPackingItemWindow = new(selectedTravel);
             addPackingItemWindow.ShowDialog();

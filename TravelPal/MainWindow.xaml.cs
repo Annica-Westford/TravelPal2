@@ -25,6 +25,9 @@ namespace TravelPal
     //Så nu syns det inte längre att jag har gjort en massa commits under hela projektets gång...
     //Och ja, nu har jag lärt mig att om jag ska försöka implementera något jag är lite osäker på ska jag använda BRANCH framöver :)
 
+
+    //TODO - lägga "Add Item"-funktionen i Add Travel & Travel Details istället för i ett eget fönster??
+
     public partial class MainWindow : Window
     {
         private TravelManager travelManager = new();
