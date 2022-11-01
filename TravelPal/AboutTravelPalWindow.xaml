@@ -77,7 +77,8 @@
                 HorizontalAlignment="Center"
                 />
             <Button
-                Name="btnAddTravel"
+                Name="btnClose"
+                IsDefault="True"
                 Grid.Column="0"
                 Grid.Row="2"
                 Height="35"
@@ -89,7 +90,8 @@
                 BorderThickness="2"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Right"
-                Content="Close" Click="btnAddTravel_Click" 
+                Content="Close" 
+                Click="btnClose_Click" 
                 >
                 <Button.Resources>
                     <Style TargetType="Border">

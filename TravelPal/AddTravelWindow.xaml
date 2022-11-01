@@ -62,6 +62,7 @@
                 Margin="20,0,0,0"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"
+                SelectedDateChanged="dpStartDate_SelectedDateChanged"
                 />
             <Label
                 Grid.Column="0"
@@ -182,11 +183,11 @@
                 />
             <CheckBox
                 Name="cbxAllInclusive"
-                Grid.Column="0"
+                Grid.Column="1"
                 Grid.Row="7"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Right"
-                Margin="0,0,20,0"
+                HorizontalAlignment="Left"
+                Margin="20,0,0,0"
                 >
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="2" ScaleY="2" />
@@ -194,13 +195,13 @@
             </CheckBox>
             <Label
                 Name="lblAllInclusive"
-                Grid.Column="1"
+                Grid.Column="0"
                 Grid.Row="7"
                 Content="All Inclusive*"
                 Foreground="MintCream"
-                Margin="20,0,0,0"
+                Margin="0,0,20,0"
                 VerticalContentAlignment="Center"
-                HorizontalAlignment="Left"
+                HorizontalAlignment="Right"
                 />
 
             <TextBlock

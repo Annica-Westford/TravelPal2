@@ -106,6 +106,12 @@ namespace TravelPal
             
         }
 
+        //when user has chosen start date, set selected date in datepicker end date to the startdate
+        private void dpStartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dpEndDate.SelectedDate = dpStartDate.SelectedDate;
+        }
+
         //when user presses the add button create a Trip or Vacation object and add to list of travels (in travelmanager and usermanager)
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {

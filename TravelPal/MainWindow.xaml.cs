@@ -26,6 +26,7 @@ namespace TravelPal
     //Och ja, nu har jag lärt mig att om jag ska försöka implementera något jag är lite osäker på ska jag använda BRANCH framöver :)
 
     //TODO - fråga hur man gör så de displayas utan _???
+    //TODO - ska listan med Travels i TravelManager istället bara läsa in alla användares resor så att dessa bara finns på ett ställe?
     public partial class MainWindow : Window
     {
         private TravelManager travelManager = new();
