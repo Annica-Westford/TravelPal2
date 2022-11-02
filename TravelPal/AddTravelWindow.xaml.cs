@@ -141,7 +141,6 @@ namespace TravelPal
                     Trip newTrip = new(destination, countryEnum, numberOfTravellersInt, startDate, endDate, tripTypeEnum);
 
                     travelManager.AddTravel(newTrip);
-                    userManager.AddTravelToUser(newTrip);
 
                     //set field to the newly created trip
                     addedTravel = newTrip;
@@ -160,7 +159,6 @@ namespace TravelPal
                     Vacation newVacation = new(destination, countryEnum, numberOfTravellersInt, startDate, endDate, isAllInclusive);
 
                     travelManager.AddTravel(newVacation);
-                    userManager.AddTravelToUser(newVacation);
 
                     //set field to the newly created vacation
                     addedTravel = newVacation;

@@ -24,16 +24,17 @@ namespace TravelPal
     public partial class UserDetailsWindow : Window
     {
         private UserManager userManager;
+        private TravelManager travelManager;
 
         private bool hasSuccessfullyUpdatedUser;
-
         private bool hasNoNewInputs;
 
-        public UserDetailsWindow(UserManager userManager)
+        public UserDetailsWindow(UserManager userManager, TravelManager travelManager)
         {
             InitializeComponent();
 
             this.userManager = userManager;
+            this.travelManager = travelManager;
 
             //load combobox with countries
             string[] countries = Enum.GetNames(typeof(Countries));
@@ -44,6 +45,7 @@ namespace TravelPal
             HideErrorMessages();
 
             tbxUserName.Focus();
+            
         }
 
         //load fields with the signed in user's data
@@ -148,7 +150,7 @@ namespace TravelPal
                 hasNoNewInputs = false;
 
                 Countries countryEnum = (Countries)Enum.Parse(typeof(Countries), country);
-                userManager.UpdateUserLocation(userManager.SignedInUser, countryEnum);
+                userManager.UpdateUserLocation(userManager.SignedInUser, countryEnum, travelManager);
             }
         }
 

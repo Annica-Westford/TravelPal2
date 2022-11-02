@@ -17,14 +17,8 @@ public class UserManager
 
     public UserManager()
     {
-
         AddAdmin();
-    }
 
-    private void AddAdmin()
-    {
-        Admin admin = new("admin", "password", Enums.Countries.Antarctica);
-        Users.Add(admin);
     }
 
     //Prepopulate list of users with gandalf and add two travels to him
@@ -48,14 +42,15 @@ public class UserManager
         vacation.PackingList.Add(new OtherItem("Rubber duck", 1));
         vacation.PackingList.Add(new TravelDocument("Bucket List", false));
 
-        //add travels to user's list of Travel
-        AddTravelToUser(trip);
-        AddTravelToUser(vacation);
-
-        //add travels to travelmanager list of travels
         travelManager.AddTravel(trip);
         travelManager.AddTravel(vacation);
 
+    }
+
+    private void AddAdmin()
+    {
+        Admin admin = new("admin", "password", Enums.Countries.Antarctica);
+        Users.Add(admin);
     }
 
     //checks if user with the same username already exists - if yes return false, else return true and add user to list
@@ -100,15 +95,15 @@ public class UserManager
         return true;
     }
 
-    public void UpdateUserLocation(IUser userToUpdate, Countries country)
+    public void UpdateUserLocation(IUser userToUpdate, Countries country, TravelManager travelManager)
     {
         //check if user location is inside Europe before change 
-        bool isInsideEuropeBeforeChange = CheckIfCountryIsInEurope(userToUpdate.Location.ToString());
+        bool isInsideEuropeBeforeChange = travelManager.CheckIfCountryIsInEurope(userToUpdate.Location.ToString());
 
         userToUpdate.Location = country;
 
         //check if user location is inside Europe after change
-        bool isInsideEuropeAfterChange = CheckIfCountryIsInEurope(userToUpdate.Location.ToString());
+        bool isInsideEuropeAfterChange = travelManager.CheckIfCountryIsInEurope(userToUpdate.Location.ToString());
 
         if ((isInsideEuropeBeforeChange != isInsideEuropeAfterChange) && userToUpdate is User)
         {
@@ -116,56 +111,9 @@ public class UserManager
             //if userToUpdate is admin no changes needs to be made since admin has no travels
 
             User user = userToUpdate as User;
-            UpdateTravelDocuments(user);
+            travelManager.UpdateTravelDocuments(user);
         }
 
-    }
-
-    private bool CheckIfCountryIsInEurope(string country)
-    {
-        foreach (string europeanCountry in Enum.GetNames(typeof(EuropeanCountries)))
-        {
-            if (country == europeanCountry)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private void UpdateTravelDocuments(User user)
-    {
-        foreach (Travel travel in user.Travels)
-        {            
-            foreach (IPackingListItem item in travel.PackingList)
-            {
-                if (item is TravelDocument && item.Name.ToLower() == "passport")
-                {
-                    TravelDocument passport = item as TravelDocument;
-
-                    passport.Required = CheckIfPassportShouldBeRequired(user.Location, travel.Country);
-
-                }
-            }            
-        }       
-    }
-
-    private bool CheckIfPassportShouldBeRequired(Countries userLocation, Countries travelDestination)
-    {    
-        bool isInsideEuropeUserLocation = CheckIfCountryIsInEurope(userLocation.ToString());
-        bool isInsideEuropeTravelCountry = CheckIfCountryIsInEurope(travelDestination.ToString());
-
-        //if travel country is outside of EU & user lives in EU or if user lives outside of EU
-        if ((!isInsideEuropeUserLocation) || (!isInsideEuropeTravelCountry && isInsideEuropeUserLocation))
-        {
-            return true;
-        }
-        //else if travel country is inside of EU and the user lives in EU
-        else 
-        {
-            return false;
-        }
     }
 
     public void UpdateUserPassword(IUser userToUpdate, string newPassword)
@@ -190,64 +138,7 @@ public class UserManager
     }
 
     
-    //adds a travel to the users list of travels
-    public void AddTravelToUser(Travel travelToAdd)
-    {
-        //cast to User to access Travels
-        User user = SignedInUser as User;
-        user.Travels.Add(travelToAdd);
-
-        //add default travel document to packing item list
-        AddDefaultTravelDocuments(travelToAdd);  
-    }
-
-    private void AddDefaultTravelDocuments(Travel travel)
-    {
-        //if Required
-        if (CheckIfPassportShouldBeRequired(SignedInUser.Location, travel.Country))
-        {
-            //add TravelDocument with name "Passport" and required set to true
-            travel.PackingList.Add(new TravelDocument("Passport", true));  
-        }
-        //if not Required
-        else if (!CheckIfPassportShouldBeRequired(SignedInUser.Location, travel.Country))
-        {
-            //add TravelDocument with name "Passport" and required set to false
-            travel.PackingList.Add(new TravelDocument("Passport", false));
-        }
-
-    }
 
     
-
-    public void RemoveTravelFromUser(Travel travelToRemove)
-    {
-        //if signedInUser is User, remove travel directly from the users list
-        if (SignedInUser is User)
-        {
-            User user = SignedInUser as User;
-            user.Travels.Remove(travelToRemove);
-        }
-        //if signedInUser is Admin, go through all users in list of users to see which travel matches the selected travel
-        else if (SignedInUser is Admin)
-        {
-            for (int i = 0; i < Users.Count; i++)
-            {
-                if (Users[i] is User)
-                {
-                    User selectedUser = Users[i] as User;
-
-                    for (int j = 0; j < selectedUser.Travels.Count; j++)
-                    {
-                        if (selectedUser.Travels[j].Equals(travelToRemove))
-                        {
-                            selectedUser.Travels.Remove(travelToRemove);
-                        }
-                    }
-                }
-            }
-            
-        }
-    }
 
 }
