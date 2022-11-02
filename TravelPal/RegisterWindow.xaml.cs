@@ -23,14 +23,16 @@ namespace TravelPal
     public partial class RegisterWindow : Window
     {
         private UserManager userManager;
+        private TravelManager travelManager;
 
         private bool isOKFields;
 
-        public RegisterWindow(UserManager userManager)
+        public RegisterWindow(UserManager userManager, TravelManager travelManager)
         {
             InitializeComponent();
 
             this.userManager = userManager;
+            this.travelManager = travelManager;
 
             //load combobox with countries
             string[] countries = Enum.GetNames(typeof(Countries));
@@ -82,7 +84,7 @@ namespace TravelPal
                     MessageBox.Show("Thanks for signing up! 😀", "Thanks!");
 
                     //go back to main window & close this window
-                    new MainWindow(userManager).Show();
+                    new MainWindow(userManager, travelManager).Show();
                     Close();
                 }
                 else

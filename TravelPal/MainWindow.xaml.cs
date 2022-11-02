@@ -26,10 +26,10 @@ namespace TravelPal
     //Och ja, nu har jag lärt mig att om jag ska försöka implementera något jag är lite osäker på ska jag använda BRANCH framöver :)
 
     //TODO - fråga hur man gör så de displayas utan _???
-    //TODO - ska listan med Travels i TravelManager istället bara läsa in alla användares resor så att dessa bara finns på ett ställe?
+    //TODO - should Travel have a property "Owner" which is the user who booked the trip?
     public partial class MainWindow : Window
     {
-        private TravelManager travelManager = new();
+        private TravelManager travelManager;
         private UserManager userManager = new();
         public MainWindow()
         {
@@ -37,19 +37,13 @@ namespace TravelPal
 
             tbxUserName.Focus();
 
-            userManager.PopulateUsersList(travelManager);
+            travelManager = new(userManager);
+
+            userManager.PopulateUsersList(travelManager); 
 
         }
 
-        //create two more constructors so I can return to main window when closing down other windows
-        public MainWindow(UserManager userManager) 
-        {
-            this.userManager = userManager;
-
-            InitializeComponent();
-
-            tbxUserName.Focus();
-        }
+        //create another constructor so I can return to main window when closing down other windows
 
         public MainWindow(UserManager userManager, TravelManager travelManager) 
         {
@@ -64,7 +58,7 @@ namespace TravelPal
         //Opens up register window 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            new RegisterWindow(userManager).Show();
+            new RegisterWindow(userManager, travelManager).Show();
 
             //close Main Window
             Close();

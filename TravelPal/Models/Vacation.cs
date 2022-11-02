@@ -11,7 +11,7 @@ namespace TravelPal.Models;
 public class Vacation : Travel
 {
     public bool IsAllInclusive { get; set; }
-    public Vacation(string destination, Countries country, int travellers, DateTime startDate, DateTime endDate, bool isAllInclusive) : base(destination, country, travellers, startDate, endDate)
+    public Vacation(string destination, Countries country, int travellers, DateTime startDate, DateTime endDate, IUser travelOwner, bool isAllInclusive) : base(destination, country, travellers, startDate, endDate, travelOwner)
     {
         IsAllInclusive = isAllInclusive;
     }

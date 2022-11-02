@@ -89,7 +89,7 @@ namespace TravelPal
         //Click on User-button - send user to UserDetailsWindow
         private void btnUser_Click(object sender, RoutedEventArgs e)
         {
-            new UserDetailsWindow(userManager).ShowDialog();
+            new UserDetailsWindow(userManager, travelManager).ShowDialog();
         }
 
         //Click on Add Travel-button - send user to AddTravelWindow
@@ -124,11 +124,7 @@ namespace TravelPal
                 ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
                 Travel selectedTravel = selectedItem.Tag as Travel;
 
-                //Remove travel from list of travels in TravelManager
                 travelManager.RemoveTravel(selectedTravel);
-
-                //Remove travel from user's list of travels
-                userManager.RemoveTravelFromUser(selectedTravel);
 
                 UpdateTravelsListView();
             }
