@@ -88,7 +88,7 @@ namespace TravelPal
             }
             else if (hasSuccessfullyUpdatedUser)
             {
-                MessageBox.Show("Your user details have been updated!");
+                MessageBox.Show("Your user details have been updated!", "Yay!");
                 Close();
             }   
 

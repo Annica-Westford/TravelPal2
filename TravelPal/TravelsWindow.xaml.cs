@@ -89,15 +89,13 @@ namespace TravelPal
         //Click on User-button - send user to UserDetailsWindow
         private void btnUser_Click(object sender, RoutedEventArgs e)
         {
-            UserDetailsWindow userDetailsWindow = new(userManager);
-            userDetailsWindow.ShowDialog();
+            new UserDetailsWindow(userManager).ShowDialog();
         }
 
         //Click on Add Travel-button - send user to AddTravelWindow
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
-            AddTravelWindow addTravelWindow = new(userManager, travelManager);
-            addTravelWindow.ShowDialog();
+            new AddTravelWindow(userManager, travelManager).ShowDialog();
 
             //when done with add travel, update listview to see added travel
             UpdateTravelsListView();
@@ -113,8 +111,7 @@ namespace TravelPal
                 Travel selectedTravel = selectedItem.Tag as Travel;
 
                 //send user to TravelDetailsWindow
-                TravelDetailsWindow travelDetailsWindow = new(selectedTravel); 
-                travelDetailsWindow.ShowDialog();
+                new TravelDetailsWindow(selectedTravel).ShowDialog();
             }
         }
 
@@ -154,16 +151,23 @@ namespace TravelPal
         //Click on About-button - show small info-box with information about how to use the app and about TravelPal as a company
         private void btnAboutTravelPal_Click(object sender, RoutedEventArgs e)
         {
-            
-            AboutTravelPalWindow aboutTravelPalWindow = new();
-            aboutTravelPalWindow.ShowDialog();
+            string about = "TravelPal was founded during Middle Earth's Second Age by the Lady of Light herself, Galadriel. " +
+                "She was travelling a lot at the time and couldn't find a travel app that suited her needs - so she created one! " +
+                "The app has won the prize for 'best travel app outside of Middle Earth' three years in a row. " +
+                "Even Sauron allegedly used the app when he needed to quickly book vacation to the Bahamas. " +
+                "Apparently he said: 'Even the Dark Lord needs to rest and drink Piña Coladas sometimes' \n\n";
+
+            string howToUse = "TravelPal is easy to use. Just click on Add Travel to add a new travel. " +
+                "Click on User to see and change user details. Select a travel in the list and then either click on Details to see " +
+                "the details of the travel or select Remove to remove the selected travel.";
+
+            MessageBox.Show(about + howToUse, "About TravelPal", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         //Click on Sign out-button - close TravelsWindow and go back to MainWindow
         private void btnSignOut_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new(userManager, travelManager);
-            mainWindow.Show();
+            new MainWindow(userManager, travelManager).Show();
             Close();
         }
     }

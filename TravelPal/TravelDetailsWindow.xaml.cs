@@ -156,8 +156,7 @@ namespace TravelPal
         //Click on Add Item button - send user to Add Item Window
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
         {
-            AddPackingItemWindow addPackingItemWindow = new(selectedTravel);
-            addPackingItemWindow.ShowDialog();
+            new AddPackingItemWindow(selectedTravel).ShowDialog();
 
             UpdatePackingItemsListView();
         }

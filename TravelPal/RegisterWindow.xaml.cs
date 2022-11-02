@@ -79,11 +79,10 @@ namespace TravelPal
 
                 if (isSuccessfullyAdded)
                 {
-                    MessageBox.Show("Thanks for signing up! 😀");
+                    MessageBox.Show("Thanks for signing up! 😀", "Thanks!");
 
                     //go back to main window & close this window
-                    MainWindow mainWindow = new(userManager);
-                    mainWindow.Show();  
+                    new MainWindow(userManager).Show();
                     Close();
                 }
                 else

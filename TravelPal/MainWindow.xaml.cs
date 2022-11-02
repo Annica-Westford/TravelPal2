@@ -64,8 +64,7 @@ namespace TravelPal
         //Opens up register window 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            RegisterWindow registerWindow = new(userManager);
-            registerWindow.Show();
+            new RegisterWindow(userManager).Show();
 
             //close Main Window
             Close();

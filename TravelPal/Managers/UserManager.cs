@@ -41,7 +41,12 @@ public class UserManager
 
         //add two travels to user
         Trip trip = new("Alpaca hotel", Enums.Countries.Angola, 3, new DateTime(2023, 01, 15), new DateTime(2023, 01, 27), Enums.TripTypes.Leisure);
-        Vacation vacation = new Vacation("Flamingo Resort", Enums.Countries.Spain, 4, new DateTime(2023, 04, 01), new DateTime(2023, 04, 08), true);
+        trip.PackingList.Add(new OtherItem("Pants", 5));
+        trip.PackingList.Add(new TravelDocument("Insurance paper", true));
+
+        Vacation vacation = new Vacation("Palm Tree Resort", Enums.Countries.Spain, 4, new DateTime(2023, 04, 01), new DateTime(2023, 04, 08), true);
+        vacation.PackingList.Add(new OtherItem("Rubber duck", 1));
+        vacation.PackingList.Add(new TravelDocument("Bucket List", false));
 
         //add travels to user's list of Travel
         AddTravelToUser(trip);
