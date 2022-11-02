@@ -17,8 +17,9 @@ public class Travel
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public int TravelDays { get; set; }
+    public IUser TravelOwner { get; set; }
 
-    public Travel(string destination, Countries country, int travellers, DateTime startDate, DateTime endDate)
+    public Travel(string destination, Countries country, int travellers, DateTime startDate, DateTime endDate, IUser travelOwner)
     {
         Destination = destination;
         Country = country;
@@ -26,6 +27,7 @@ public class Travel
         StartDate = startDate;
         EndDate = endDate;
         TravelDays = CalculateTravelDays();
+        TravelOwner = travelOwner;
     }
 
     private int CalculateTravelDays()

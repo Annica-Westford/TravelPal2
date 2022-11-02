@@ -105,32 +105,9 @@ public class TravelManager
     {
         Travels.Remove(travelToRemove);
 
-        //if signedInUser is User, remove travel directly from the users list
-        if (userManager.SignedInUser is User)
-        {
-            User user = userManager.SignedInUser as User;
-            user.Travels.Remove(travelToRemove);
-        }
-        //if signedInUser is Admin, go through all users in list of users to see which travel matches the selected travel
-        else if (userManager.SignedInUser is Admin)
-        {
-            for (int i = 0; i < userManager.Users.Count; i++)
-            {
-                if (userManager.Users[i] is User)
-                {
-                    User selectedUser = userManager.Users[i] as User;
+        User travelOwner = travelToRemove.TravelOwner as User;
+        travelOwner.Travels.Remove(travelToRemove);
 
-                    for (int j = 0; j < selectedUser.Travels.Count; j++)
-                    {
-                        if (selectedUser.Travels[j].Equals(travelToRemove))
-                        {
-                            selectedUser.Travels.Remove(travelToRemove);
-                        }
-                    }
-                }
-            }
-
-        }
     }
 
     

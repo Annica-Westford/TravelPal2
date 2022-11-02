@@ -138,7 +138,7 @@ namespace TravelPal
                     TripTypes tripTypeEnum = (TripTypes)Enum.Parse(typeof(TripTypes), tripType);
 
                     //create a Trip object
-                    Trip newTrip = new(destination, countryEnum, numberOfTravellersInt, startDate, endDate, tripTypeEnum);
+                    Trip newTrip = new(destination, countryEnum, numberOfTravellersInt, startDate, endDate, userManager.SignedInUser, tripTypeEnum);
 
                     travelManager.AddTravel(newTrip);
 
@@ -156,7 +156,7 @@ namespace TravelPal
                     }
 
                     //create a Vacation object
-                    Vacation newVacation = new(destination, countryEnum, numberOfTravellersInt, startDate, endDate, isAllInclusive);
+                    Vacation newVacation = new(destination, countryEnum, numberOfTravellersInt, startDate, endDate, userManager.SignedInUser, isAllInclusive);
 
                     travelManager.AddTravel(newVacation);
 

@@ -34,11 +34,11 @@ public class UserManager
         AddUser(gandalf);
 
         //add two travels to user
-        Trip trip = new("Alpaca hotel", Enums.Countries.Angola, 3, new DateTime(2023, 01, 15), new DateTime(2023, 01, 27), Enums.TripTypes.Leisure);
+        Trip trip = new("Alpaca hotel", Enums.Countries.Angola, 3, new DateTime(2023, 01, 15), new DateTime(2023, 01, 27), gandalf, Enums.TripTypes.Leisure);
         trip.PackingList.Add(new OtherItem("Pants", 5));
         trip.PackingList.Add(new TravelDocument("Insurance paper", true));
 
-        Vacation vacation = new Vacation("Palm Tree Resort", Enums.Countries.Spain, 4, new DateTime(2023, 04, 01), new DateTime(2023, 04, 08), true);
+        Vacation vacation = new Vacation("Palm Tree Resort", Enums.Countries.Spain, 4, new DateTime(2023, 04, 01), new DateTime(2023, 04, 08), gandalf, true);
         vacation.PackingList.Add(new OtherItem("Rubber duck", 1));
         vacation.PackingList.Add(new TravelDocument("Bucket List", false));
 
