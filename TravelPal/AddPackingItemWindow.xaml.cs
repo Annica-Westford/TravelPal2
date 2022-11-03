@@ -37,6 +37,16 @@ namespace TravelPal
             UpdatePackingItemsListView();
         }
 
+        private void ResetUI()
+        {
+            HideRequiredFields();
+
+            tbxItemName.Clear();
+            cbxDocument.IsChecked = false;
+            cbxRequired.IsChecked = false;
+            tbxQuantity.Clear();
+        }
+
         //hide and disable the fields for "required" until user checks the document-box
         private void HideRequiredFields()
         {
@@ -46,16 +56,6 @@ namespace TravelPal
             lblQuantity.Visibility = Visibility.Visible;
             tbxQuantity.Visibility = Visibility.Visible;
             tbxQuantity.IsEnabled = true;
-        }
-
-        private void ResetUI()
-        {
-            HideRequiredFields();
-
-            tbxItemName.Clear();
-            cbxDocument.IsChecked = false;
-            cbxRequired.IsChecked = false;
-            tbxQuantity.Clear();
         }
 
         private void UpdatePackingItemsListView()
@@ -73,6 +73,7 @@ namespace TravelPal
             }
         }
 
+        //when user checks the "Document" checkbox
         private void cbxDocument_Checked(object sender, RoutedEventArgs e)
         {
             lblQuantity.Visibility = Visibility.Hidden;
@@ -84,6 +85,7 @@ namespace TravelPal
             cbxRequired.IsEnabled = true;
         }
 
+        //when user unchecks the "Document" checkbox
         private void cbxDocument_Unchecked(object sender, RoutedEventArgs e)
         {
             HideRequiredFields();
@@ -114,15 +116,15 @@ namespace TravelPal
 
                 ResetUI();
             }
-            catch (ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
             catch (FormatException ex)
             {
                 MessageBox.Show("You need to input a whole number in the 'Quantity' field");
             }
-
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
             UpdatePackingItemsListView();
         }
 

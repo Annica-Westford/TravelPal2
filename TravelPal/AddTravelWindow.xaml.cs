@@ -96,17 +96,16 @@ namespace TravelPal
             }
             else if (cbTripOrVacation.SelectedItem.ToString() == "Vacation")
             {
+                //show label for all inclusive
+                lblAllInclusive.Visibility = Visibility.Visible;
+
                 //show and enable checkbox for all inclusive
                 cbxAllInclusive.Visibility = Visibility.Visible;
                 cbxAllInclusive.IsEnabled = true;
-
-                //show label for all inclusive
-                lblAllInclusive.Visibility = Visibility.Visible;
-            }
-            
+            }  
         }
 
-        //when user has chosen start date, set selected date in datepicker end date to the startdate
+        //when user has chosen start date, set selected date in datepicker for end date to the startdate
         private void dpStartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             dpEndDate.SelectedDate = dpStartDate.SelectedDate;
@@ -167,10 +166,8 @@ namespace TravelPal
                 //enable user to add item to packing list
                 btnAddItemToPackingList.IsEnabled = true;
 
-                //show packinglist
                 UpdatePackingItemsListView();
 
-                //disable textinputs and comboboxes
                 DisableTextInputsAndComboboxes();
 
                 txbTravelAdded.Visibility = Visibility.Visible;

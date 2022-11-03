@@ -107,7 +107,6 @@ public class TravelManager
 
         User travelOwner = travelToRemove.TravelOwner as User;
         travelOwner.Travels.Remove(travelToRemove);
-
     }
 
     

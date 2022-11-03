@@ -18,7 +18,6 @@ public class UserManager
     public UserManager()
     {
         AddAdmin();
-
     }
 
     //Prepopulate list of users with gandalf and add two travels to him
@@ -47,6 +46,7 @@ public class UserManager
 
     }
 
+    //add default admin
     private void AddAdmin()
     {
         Admin admin = new("admin", "password", Enums.Countries.Antarctica);
@@ -67,21 +67,6 @@ public class UserManager
         }  
     }
 
-    //public void RemoveUser(IUser userToRemove)
-    //{
-    //    //Maybe implement - don't need to!
-    //}
-
-    public bool UpdateUsername (IUser userToUpdate, string username)
-    {        
-        if (ValidateUsername(username))
-        {
-            userToUpdate.UserName = username;
-            return true;
-        }
-        return false;
-    }
-
     //check if user with username already exists - returns true if username is ok, ie no one else has this name
     private bool ValidateUsername(string username)
     {
@@ -94,33 +79,6 @@ public class UserManager
         }
         return true;
     }
-
-    public void UpdateUserLocation(IUser userToUpdate, Countries country, TravelManager travelManager)
-    {
-        //check if user location is inside Europe before change 
-        bool isInsideEuropeBeforeChange = travelManager.CheckIfCountryIsInEurope(userToUpdate.Location.ToString());
-
-        userToUpdate.Location = country;
-
-        //check if user location is inside Europe after change
-        bool isInsideEuropeAfterChange = travelManager.CheckIfCountryIsInEurope(userToUpdate.Location.ToString());
-
-        if ((isInsideEuropeBeforeChange != isInsideEuropeAfterChange) && userToUpdate is User)
-        {
-            //the travel documents must change
-            //if userToUpdate is admin no changes needs to be made since admin has no travels
-
-            User user = userToUpdate as User;
-            travelManager.UpdateTravelDocuments(user);
-        }
-
-    }
-
-    public void UpdateUserPassword(IUser userToUpdate, string newPassword)
-    {
-        userToUpdate.Password = newPassword;
-    }
-
 
     //check if user with username & password exists - if ok, return true and set SignedInUser to the user, else return false
     public bool SignInUser(string username, string password)
@@ -136,6 +94,46 @@ public class UserManager
         }
         return false;
     }
+
+    public bool UpdateUsername (IUser userToUpdate, string username)
+    {        
+        if (ValidateUsername(username))
+        {
+            userToUpdate.UserName = username;
+            return true;
+        }
+        return false;
+    }
+
+    
+
+    public void UpdateUserLocation(IUser userToUpdate, Countries country, TravelManager travelManager)
+    {
+        //check if user location is inside Europe before change 
+        bool isInsideEuropeBeforeChange = travelManager.CheckIfCountryIsInEurope(userToUpdate.Location.ToString());
+
+        userToUpdate.Location = country;
+
+        //check if user location is inside Europe after change
+        bool isInsideEuropeAfterChange = travelManager.CheckIfCountryIsInEurope(userToUpdate.Location.ToString());
+
+        if ((isInsideEuropeBeforeChange != isInsideEuropeAfterChange) && userToUpdate is User)
+        {
+            //the travel documents in packing list must change since user changed country from inside of EU to outside, or vice versa
+            //if userToUpdate is admin no changes needs to be made since admin has no travels
+            User user = userToUpdate as User;
+            travelManager.UpdateTravelDocuments(user);
+        }
+
+    }
+
+    public void UpdateUserPassword(IUser userToUpdate, string newPassword)
+    {
+        userToUpdate.Password = newPassword;
+    }
+
+
+    
 
     
 

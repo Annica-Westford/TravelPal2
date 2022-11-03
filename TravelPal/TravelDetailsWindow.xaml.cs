@@ -50,15 +50,13 @@ namespace TravelPal
             lblTripType.Visibility = Visibility.Hidden;
             cbTripType.Visibility = Visibility.Hidden;
             cbxAllInclusive.Visibility = Visibility.Hidden;
-            lblAllInclusive.Visibility = Visibility.Hidden;
-            
+            lblAllInclusive.Visibility = Visibility.Hidden; 
         }
 
 
         //display travel info in the different input fields
         private void DisplayInitialInfoInFields()
         {
-            //Display chosen dates
             lblStartDate.Content = selectedTravel.StartDate.ToString("d");
             lblEndDate.Content = selectedTravel.EndDate.ToString("d");
 
@@ -150,7 +148,6 @@ namespace TravelPal
 
                 lvPackingList.Items.Add(lvItem);
             }
-
         }
 
         //Click on Add Item button - send user to Add Item Window

@@ -65,7 +65,7 @@ namespace TravelPal
             txbWarningPasswordNoMatch.Visibility = Visibility.Hidden;
         }
         
-        //Click on Save button - check if user has made any changes and validate them & update user
+        //Click on Save button - check if user has made any changes, if yes - validate them & update user
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             HideErrorMessages();
@@ -75,10 +75,10 @@ namespace TravelPal
             string confirmPassword = tbxConfirmPassword.Text;
             string country = cbCountry.SelectedItem as string;
 
-            //give bool the initial value true
-            hasSuccessfullyUpdatedUser = true;
+            //give bools the initial value true
+            hasSuccessfullyUpdatedUser = true; //is set to false if user types in something wrong
+            hasNoNewInputs = true; //keeps track of if user changes anything in the fields or not
 
-            //these methods set bool to false if user typed in something wrong
             TryUpdateUsername(username);
             TryUpdateLocation(country);
             TryUpdatePassWord(newPassword, confirmPassword);
@@ -96,10 +96,10 @@ namespace TravelPal
 
         }
 
-        //if user has typed in a new name - update name property if valid
+        //check if user has typed in a new name - if yes, update name property if valid
         private void TryUpdateUsername(string username)
         {
-            //if username equals SignedInUser.UserName no change has been made - don't do anything
+            //if the inputted username does not equal SignedInUser.UserName it means a change has been made
             if (username != userManager.SignedInUser.UserName)
             {
                 hasNoNewInputs = false; //user has changed an input
@@ -117,10 +117,7 @@ namespace TravelPal
                     }
                 }
             }
-            else
-            {
-                hasNoNewInputs = true;
-            }
+            
         }
 
 
@@ -141,13 +138,13 @@ namespace TravelPal
         }
 
 
-        //if user has selected a new country - update location property
+        //check if user has selected a new country - if yes, update location property
         private void TryUpdateLocation(string? country)
         {
-            //if selected country equals SignedInUser.Location no changes has been made 
+            //if selected country does not equal SignedInUser.Location it means the user has selected a new country
             if (country != userManager.SignedInUser.Location.ToString())
             {
-                hasNoNewInputs = false;
+                hasNoNewInputs = false; //user has changed an input
 
                 Countries countryEnum = (Countries)Enum.Parse(typeof(Countries), country);
                 userManager.UpdateUserLocation(userManager.SignedInUser, countryEnum, travelManager);
@@ -155,13 +152,13 @@ namespace TravelPal
         }
 
 
-        //if user has entered a new password, update password property if valid
+        //check if user has entered a new password, if yes, update password property if valid
         private void TryUpdatePassWord(string newPassword, string confirmPassword)
         {
-            //check if any of the password fields have something written in them, if both are null or empty, don't do anything
+            //check if any of the password fields have something written in them, if yes - user has made new input
             if (!string.IsNullOrEmpty(newPassword) || !string.IsNullOrEmpty(confirmPassword))
             {
-                hasNoNewInputs = false;
+                hasNoNewInputs = false; //user has changed an input
 
                 //check that password is 5 or more characters
                 if (ValidatePasswordLength(newPassword))
